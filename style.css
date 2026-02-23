@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    font-family: 'Kanit', sans-serif;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    max-width: 500px;
+    padding: 2.5rem 1.5rem;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border: 5px solid #fff;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #d81b60;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-love {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 80%;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-love:active {
+    transform: scale(0.9);
+}
+
+.hidden-msg {
+    display: none;
+    margin-top: 20px;
+    color: #ff4081;
+    font-weight: bold;
+}
+
+/* Responsive Media Query */
+@media (max-width: 480px) {
+    h1 { font-size: 1.6rem; }
+    p { font-size: 0.95rem; }
+    .card { padding: 1.5rem 1rem; }
+}
+
+/* Animation หัวใจลอย */
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    animation: moveUp 4s linear forwards;
+}
+
+@keyframes moveUp {
+    from { transform: translateY(100vh) scale(0.5); opacity: 1; }
+    to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
