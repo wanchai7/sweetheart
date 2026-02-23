@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special Someone</title>
+    <style>
+        /* CSS: ตกแต่งความสวยงาม */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: #880e4f;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            max-width: 400px;
+            border: 2px solid #f06292;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .btn-love {
+            background-color: #f06292;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(240, 98, 146, 0.4);
+        }
+
+        .btn-love:hover {
+            background-color: #ec407a;
+            transform: scale(1.1);
+        }
+
+        /* JavaScript Heart Animation Style */
+        .heart {
+            position: absolute;
+            color: #f06292;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            animation: float 4s linear forwards;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        #hidden-message {
+            display: none;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #d81b60;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="main-content">
+            <h1>❤️ ถึงคนพิเศษ ❤️</h1>
+            <p>อยากบอกว่าทุกวินาทีที่รู้จักเธอ<br>มันคือช่วงเวลาที่ดีที่สุดเลยนะ</p>
+            <button class="btn-love" onclick="showSurprise()">กดดูความลับสิ</button>
+        </div>
+        <div id="hidden-message">
+            รักนะเจ้าตัวแสบ! 😊💖<br>
+            ขอบคุณที่อยู่ด้วยกันนะ
+        </div>
+    </div>
+
+    <script>
+        // JS: ลูกเล่นหัวใจลอยตัว
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // สุ่มตำแหน่งเริ่มต้น
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.bottom = "-5vh";
+            
+            // สุ่มขนาดและความเร็ว
+            const duration = Math.random() * 2 + 3 + "s";
+            heart.style.animationDuration = duration;
+            heart.style.fontSize = Math.random() * 20 + 10 + "px";
+            
+            document.body.appendChild(heart);
+
+            // ลบ element เมื่อจบ animation เพื่อไม่ให้หนักเครื่อง
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // สร้างหัวใจทุกๆ 300ms
+        setInterval(createHeart, 300);
+
+        // ฟังก์ชันแสดงข้อความลับ
+        function showSurprise() {
+            const message = document.getElementById('hidden-message');
+            const btn = document.querySelector('.btn-love');
+            
+            message.style.display = 'block';
+            btn.innerHTML = 'งุ้ยยยย ✨';
+            
+            // สาดหัวใจเยอะๆ เมื่อกดปุ่ม
+            for(let i=0; i<20; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        }
+    </script>
+</body>
+</html>
