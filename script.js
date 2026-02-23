@@ -1,31 +1,43 @@
-const loveBtn = document.getElementById('loveBtn');
-const msg = document.getElementById('msg');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const successMsg = document.getElementById('success-msg');
 
-loveBtn.addEventListener('click', () => {
-    msg.style.display = 'block';
-    // สาดหัวใจเมื่อกดปุ่ม
-    for(let i=0; i<20; i++) {
-        setTimeout(createHeart, i * 80);
+// 1. ลูกเล่นปุ่ม "ไม่" ที่วิ่งหนีเวลาจะกด
+noBtn.addEventListener('mouseover', () => {
+    // คำนวณตำแหน่งสุ่ม
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+});
+
+// 2. เมื่อกดปุ่ม "ตกลง"
+yesBtn.addEventListener('click', () => {
+    successMsg.style.display = 'block';
+    document.querySelector('.btn-group').style.display = 'none';
+    document.querySelector('.question').style.display = 'none';
+    
+    // สาดหัวใจรัวๆ
+    for(let i=0; i<50; i++) {
+        setTimeout(createHeart, i * 50);
     }
-    // เปลี่ยนข้อความบนปุ่ม
-    loveBtn.innerHTML = "ได้รับความรักแล้ว 😊";
 });
 
 function createHeart() {
     const heart = document.createElement('div');
-    heart.className = 'floating-heart';
-    
-    // สุ่ม emoji หัวใจหลายแบบ
-    const hearts = ['❤️', '💖', '💝', '💗', '💓'];
-    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.className = 'floating';
+    const emojis = ['❤️', '💖', '✨', '🌸', '🍬'];
+    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
     
     heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
-    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+    heart.style.setProperty('--duration', (Math.random() * 2 + 3) + 's');
+    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
     
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 4000);
 }
 
-// ลอยเบาๆ ตลอดเวลา
-setInterval(createHeart, 1000);
+// สร้างหัวใจเบาๆ ตลอดเวลา
+setInterval(createHeart, 600);

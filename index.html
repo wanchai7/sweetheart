@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Special One - Nam-Aun</title>
+    <title>Special Request for Nam-Aun</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -11,21 +11,23 @@
 
     <div class="card">
         <div class="profile-container">
-          <img src="nam-aun.png" alt="Nam-Aun" class="profile-img" id="myImage">
+            <img src="nam-aun.png" alt="Nam-Aun" class="profile-img">
+            <div class="heart-badge">❤️</div>
         </div>
 
         <div class="content">
-            <h1 class="nickname">"น้ำอุ่น"</h1>
-            <h2 class="fullname">พัตร์พิมล เหี้ยมหาญ</h2>
-            <div class="divider"></div>
-            <p class="message">
-                ทุกช่วงเวลาที่ผ่านไป <br>
-                ความน่ารักของเธอก็ยังทำให้ใจฟูเสมอ
-            </p>
+            <h1 class="nickname">Hey, น้ำอุ่น</h1>
+            <p class="question">เขียนโค้ดต้องใช้เวลา... <br>แต่ถ้า "รักเธอขึ้นมา" ต้องใช้คำสั่งอะไรนะ? </p>
+            
+            <div class="btn-group">
+                <button class="btn-yes" id="yesBtn">เป็นแฟนกันนะ</button>
+                <button class="btn-no" id="noBtn">ไม่เป็น (ลองกดดูสิ)</button>
+            </div>
 
-            <button class="btn-love" id="loveBtn">กดรับความรัก ✨</button>
-            <div id="msg" class="hidden-msg">
-                รอยยิ้มของเธอคือความสุขของฉันนะ ❤️
+            <div id="success-msg" class="hidden-msg">
+                <h2 class="congrats">Mission Accomplished! 💖</h2>
+                <p>Status: <span class="code-text">In a relationship</span></p>
+                <p>เย้! สัญญาว่าจะดูแล Code และดูแลเธอให้ดีที่สุดเลย</p>
             </div>
         </div>
     </div>

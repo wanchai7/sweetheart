@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
 }
 
 body {
@@ -9,114 +8,128 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%); /* โทนฟ้าชมพูพาสเทล */
+    /* สีหวานแบบ Cotton Candy */
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
     font-family: 'Kanit', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
     padding: 20px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85);
     width: 100%;
     max-width: 400px;
-    padding: 3rem 2rem;
+    padding: 2.5rem 1.5rem;
     border-radius: 40px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    position: relative;
-    z-index: 2;
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+    backdrop-filter: blur(10px);
+    border: 3px solid #fff;
+    z-index: 10;
 }
 
-/* ส่วนของรูปภาพ */
 .profile-container {
-    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 140px; height: 140px;
     border-radius: 50%;
+    border: 4px solid #ff4081;
     object-fit: cover;
-    border: 5px solid white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: transform 0.5s ease;
 }
 
-.profile-img:hover {
-    transform: rotate(5deg) scale(1.05);
+.heart-badge {
+    position: absolute;
+    bottom: 5px; right: 5px;
+    background: #ff4081;
+    color: white;
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    animation: pulse 1.5s infinite;
 }
 
 .nickname {
     font-family: 'Caveat', cursive;
-    font-size: 3.5rem;
-    color: #ff4081;
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    color: #d81b60;
 }
 
-.fullname {
-    font-weight: 400;
-    font-size: 1.2rem;
+.question {
     color: #555;
-    letter-spacing: 1px;
-}
-
-.divider {
-    height: 2px;
-    width: 50px;
-    background: #ff4081;
-    margin: 1.5rem auto;
-}
-
-.message {
-    color: #777;
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-}
-
-.btn-love {
-    background: linear-gradient(to right, #ff4e50, #f9d423);
-    color: white;
-    border: none;
-    padding: 15px 45px;
+    margin: 1rem 0 2rem;
     font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    width: 100%;
-    box-shadow: 0 10px 20px rgba(255, 78, 80, 0.3);
-    transition: 0.3s;
 }
 
-.btn-love:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(255, 78, 80, 0.4);
+.btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-yes {
+    background: #ff4081;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+}
+
+.btn-yes:hover { transform: scale(1.1); background: #f50057; }
+
+.btn-no {
+    background: #eee;
+    color: #888;
+    position: relative; /* สำคัญสำหรับให้ปุ่มวิ่งหนี */
+}
+
+.code-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00c853;
+    font-weight: bold;
 }
 
 .hidden-msg {
     display: none;
-    margin-top: 25px;
-    color: #d81b60;
-    font-weight: bold;
-    animation: fadeIn 1s ease;
+    margin-top: 20px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
-/* หัวใจลอย */
-.floating-heart {
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* หัวใจดุ๊กดิ๊ก */
+.floating {
     position: fixed;
     pointer-events: none;
-    z-index: 1;
-    animation: moveUp 4s linear forwards;
+    animation: floatUp var(--duration) linear forwards;
+    opacity: 0.7;
 }
 
-@keyframes moveUp {
-    from { transform: translateY(105vh) scale(0.5); opacity: 1; }
-    to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+@keyframes floatUp {
+    from { transform: translateY(105vh) rotate(0deg); }
+    to { transform: translateY(-10vh) rotate(360deg); }
 }
